@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Boneco</title>
+   <style>
+     #dvslide{
+         width: 37px;
+         height: 32px;
+         border: 1px solid white;
+         margin-left: 500px;
+         margin-top: 200px;
+     }
+    img{ width:100;
+    height:100px};
+   </style>
+    <script>
+        var imgs = [];
+        var slide;
+        var imgAtual;
+        var maxImg;
+        var temp;
+        function precarregamento(){
+            var n = 1;
+            for(var i=0 ; i < 3 ; i++){
+            imgs[i] = new Image();
+            imgs[i].src="imagem"+n+".png";
+            n++;
+            }
+                 }
+ function carregaIMG(img){
+               slide.style.backgroundImage="url('"+imgs[img].src+"')";
+          }
+          
+          function inicia(){
+              precarregamento();
+              imgAtual=0;
+              maxImg=imgs.length-1;
+              slide = document.getElementById("dvslide")
+              carregaIMG(imgAtual);
+              temp=setInterval(troca,300);
+          }
+
+          function troca(){
+              imgAtual++;
+              if(imgAtual > maxImg){
+                  imgAtual=0;
+              }
+              carregaIMG(imgAtual);
+          }
+         
+          window.addEventListener("load",inicia)
+   
+          </script>
+
+</head>
+<body>
+
+    <div id="dvslide"> </div>
+    
+</body>
+</html>
